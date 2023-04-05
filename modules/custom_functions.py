@@ -1,7 +1,11 @@
-from package import re
-from package import pandas
-from package import plt
-from package import seaborn as sns
+# In this file you can find the custom functions that I use in the project
+
+from modules import re
+from modules import pandas
+from modules import plt
+from modules import seaborn as sns
+
+
 def format_number(value: str) -> float:
     """
     ## Function that transform a string to a number
@@ -13,15 +17,15 @@ def format_number(value: str) -> float:
     """
     regexs = [r"(k|K)$", r"[.]"]
     
-    def _modify_value(number: int):
+    def _modify_value(number: int) -> str:
         """
         ## Function that modify the value of the string
 
         Args:
-            type (str): 
+            number (int): Is a number that you want to modify the format value to string
 
         Returns:
-            _type_: _description_
+            str: return the value with the format 1200.0
         """
         try:
             new_value = re.sub(pattern = regexs[0], repl = "000", string = value)
@@ -46,13 +50,13 @@ def format_number(value: str) -> float:
 
 def clean_string(value: str) -> str:
     """
-    ## Function that clean the strings
+    ## Function that delete the characters "[" and "]"  
 
     Args:
-        value (str): 
+        value (str): String that you want to clean
 
     Returns:
-        str: 
+        str: Return the string that was cleaned 
     """
     regex = r"[\[\]']"
     try:
